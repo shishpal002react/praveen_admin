@@ -1,0 +1,904 @@
+body {
+  margin: 0;
+  font-family: Quicksand !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: Quicksand !important;
+}
+
+html {
+  font-family: Quicksand !important;
+}
+/* ================= Login Styling ===================*/
+
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 200px;
+  border: 1px solid #fff;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  height: 300px;
+}
+
+.login input {
+  margin-top: 30px;
+  margin-left: 10%;
+  width: 80%;
+  height: 40px;
+}
+
+.login button {
+  margin-top: 30px;
+  margin-left: 10%;
+  width: 80%;
+  height: 40px;
+  color: #fff;
+  background: #006eb6;
+  border: none;
+  border-radius: 6px;
+}
+
+/* =============== dash styling =================*/
+
+.dash1 {
+  margin-top: 30px;
+  margin-left: 5%;
+  width: 90%;
+}
+
+.dash2 {
+  width: 100%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dash3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2%;
+  width: 96%;
+  margin-top: 20px;
+}
+
+.dash4 {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+.dash4 select {
+  width: 30%;
+  height: 30px;
+}
+
+select:focus {
+  outline: none;
+}
+
+.dash5 {
+  margin-top: 30px;
+  margin-left: 5%;
+  width: 90%;
+}
+
+.dash6 {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 20px;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
+
+.dash7 {
+  background: #8862e0;
+  width: 200px;
+  height: 120px;
+  border-radius: 10px;
+}
+.dash7 h5 {
+  color: #fff;
+  font-size: 24px;
+  padding-left: 10px;
+  padding-top: 5px;
+  margin: 0;
+}
+.dash7 p {
+  color: #fff;
+  font-size: 13px;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.cardCol1 {
+  background: #69d896;
+}
+.cardCol2 {
+  background: #4d97f3;
+}
+.cardCol3 {
+  background: #bf1c1b;
+}
+.cardCol4 {
+  background: #f0ae19;
+}
+
+.dash8 {
+  margin-top: 20px;
+  margin-left: 2%;
+  width: 96%;
+}
+.dash8 table {
+  width: 100%;
+}
+
+.dash8 table tbody {
+  width: 100%;
+}
+.dash8 table thead {
+  color: #fff;
+  background: #0179a8;
+  gap: 0;
+  height: 30px;
+}
+
+.dash8 table td {
+  text-align: center;
+  margin-top: 10px;
+  height: 30px;
+}
+
+/*============= Job Styling ==============*/
+
+.job1 {
+  margin-top: 20px;
+  margin-left: 2%;
+  width: 96%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.job2 {
+  display: flex;
+  flex-direction: column;
+}
+.job2 input {
+  height: 30px;
+  box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.1);
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+input:focus {
+  outline: none;
+}
+.job2 select {
+  height: 30px;
+  box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.1);
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+.job3 {
+  display: flex;
+  gap: 20px;
+  margin-left: 30%;
+  width: 40%;
+  padding-bottom: 30px;
+}
+.job3 button {
+  width: 32%;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+}
+
+.jobBt1 {
+  background: #006eb6;
+}
+.jobBt2 {
+  background: #f5b548;
+}
+
+.job4 {
+  margin-left: 5%;
+  width: 905;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.job4 button {
+  height: 40px;
+  color: #fff;
+  border: none;
+  width: 10%;
+  background: #006eb6;
+  border-radius: 4px;
+}
+.job5 {
+  margin-top: 30px;
+}
+.job5 table {
+  width: 100%;
+  padding-bottom: 30px;
+}
+.job5 thead {
+  background: #006eb6;
+  height: 40px;
+  color: #fff;
+}
+
+.job5 table td {
+  text-align: center;
+}
+.bt3 {
+  background: #346cb0;
+  color: #fff;
+  border: none;
+  height: 30px;
+  width: 70px;
+  border-radius: 4px;
+}
+.job5 td i {
+  color: #346cb0;
+}
+
+.bt1 {
+  background: #00a28a;
+}
+
+.bt2 {
+  height: 30px;
+  width: 60px;
+}
+
+/* ============ navbar styling ==============*/
+
+.nav1 {
+  background: #346cb0;
+  display: flex;
+  justify-content: space-between;
+}
+.nav2 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 3%;
+}
+.nav2 p {
+  color: #cad1dd;
+  font-size: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+.nav2 p:hover {
+  color: #fff;
+}
+
+.nav3 {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-right: 5%;
+}
+.nav3Img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+.nav4 {
+  margin-top: 10px;
+}
+.nav4 h4 {
+  color: #fff;
+  font-size: 24px;
+}
+.nav4 p {
+  font-size: 16px;
+  color: #cad1dd;
+}
+.custom-dropdown .dropdown-toggle {
+  background-color: transparent;
+  color: #cad1dd;
+  font-size: 18px;
+  /* Add any other custom styles you want */
+}
+.custom-dropdown {
+  background-color: transparent;
+  color: #fff;
+  font-size: 18px;
+  /* Add any other custom styles you want */
+}
+
+.custom-dropdown .dropdown-toggle:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Remove the outline from the DropdownButton when active (e.g., when a dropdown item is selected) */
+.custom-dropdown .dropdown-toggle:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ========= Upcoming Job styling ==========*/
+
+.dash2 table {
+  width: 100%;
+  margin-top: 30px;
+}
+.upJob1 {
+  margin-top: 30px;
+}
+.upJob1 thead {
+  background: #346cb0;
+  height: 60px;
+  color: #fff;
+}
+.upJob1 th,
+td {
+  text-align: center;
+}
+
+.upJob2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.freepedi {
+  border: none;
+  color: #fff;
+  margin-top: 15px;
+  width: 80px;
+  background: #e22d2d;
+  border-radius: 4px;
+}
+
+.bt4 {
+  background: #e22d2d;
+  color: #fff;
+  border: none;
+  height: 30px;
+  width: 100px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+hr {
+  border: 1px solid #e6e6e6;
+}
+
+/* ============== parent category styling ================*/
+
+.pc1 {
+  margin-top: 30px;
+  margin-left: 5%;
+  width: 90%;
+}
+.pc2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pc2 button {
+  border: none;
+  width: 10%;
+  background: #006eb6;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.pc3 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border: none;
+  box-shadow: 0 0 0 1px rgba(20, 20, 31, 0.05),
+    0 1px 3px 0 rgba(20, 20, 31, 0.15);
+}
+.pc4 {
+  padding-top: 10px;
+  margin-left: 2%;
+  width: 96%;
+  display: flex;
+  justify-content: space-between;
+}
+.pc5 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 50%;
+}
+.pc5 select {
+  border: none;
+  width: 20%;
+  border: 1px solid #c6c9d5;
+  border-radius: 4px;
+  height: 40px;
+  box-shadow: inset 0 1px 0 0 rgba(34, 34, 48, 0.05);
+}
+.pc5,
+.pc6 h6 {
+  color: #839e88;
+  font-weight: 400;
+  font-size: 20px;
+}
+.pc6 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: right;
+  width: 50%;
+}
+.pc6 input {
+  box-shadow: inset 0 1px 0 0 rgba(34, 34, 48, 0.05);
+  border: none;
+  border: 1px solid #c6c9d5;
+  width: 50%;
+  height: 40px;
+  border-radius: 4px;
+}
+.pc7 {
+  margin-top: 20px;
+  margin-left: 2%;
+  width: 96%;
+}
+.pc7 table {
+  width: 100%;
+}
+.pc7 table th {
+  text-align: left;
+  align-items: left;
+}
+
+.pc7 table tbody td {
+  text-align: left;
+  margin-left: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, Fira Sans, Helvetica Neue,
+    Apple Color Emoji, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #363642;
+}
+.parentImg {
+  width: 100px;
+  height: 120px;
+}
+
+.badge-danger {
+  padding: 5px;
+  color: #fff;
+  background-color: #4240cc;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.badge-primary {
+  color: #fff;
+  background-color: #006eb6;
+  height: 25px;
+}
+
+.backColor {
+  padding: 5px;
+  color: #fff;
+  background-color: #b76ba3;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.editBtn {
+  border: none;
+  background: #006eb6;
+  height: 40px;
+  width: 40px;
+  border-radius: 4px;
+}
+.deleteBtn {
+  border: none;
+  background: #a95292;
+  height: 40px;
+  width: 40px;
+  border-radius: 4px;
+}
+.deleteBtn i {
+  color: #fff;
+  font-size: 20px;
+}
+.deleteBtn2 {
+  border: none;
+  background: #007c69;
+  height: 40px;
+  width: 40px;
+  border-radius: 4px;
+}
+.deleteBtn2 i {
+  color: #fff;
+  font-size: 20px;
+}
+.editBtn i {
+  color: #fff;
+  font-size: 20px;
+}
+.odd {
+  background: rgba(20, 20, 31, 0.05);
+}
+
+.pc8 {
+  /* display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.pc8 h6 {
+  width: 40%;
+}
+.pc9 {
+  width: 60%;
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+.pagiBtn {
+  color: #2e609c;
+  background-color: rgba(52, 108, 176, 0.08);
+  border-color: transparent;
+  height: 20px;
+  width: 40px;
+}
+.childImg {
+  width: 120px;
+  height: 80px;
+}
+.childImg2 {
+  width: 150px;
+  height: 60px;
+}
+
+.serviceImg {
+  width: 70px;
+  height: 50px;
+}
+
+.barsBtn {
+  border: none;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.badge-success {
+  background: #00a28a;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* ============ slot styling ============*/
+
+.slot1 {
+  padding-top: 20px;
+  margin-left: 2%;
+  width: 96%;
+  display: flex;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.slot1 select {
+  border: none;
+  width: 20%;
+  border: 1px solid #c6c9d5;
+  border-radius: 4px;
+  height: 40px;
+  box-shadow: inset 0 1px 0 0 rgba(34, 34, 48, 0.05);
+}
+
+.slot1 input {
+  box-shadow: inset 0 1px 0 0 rgba(34, 34, 48, 0.05);
+  border: none;
+  border: 1px solid #c6c9d5;
+  width: 15%;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.slot2 {
+  margin-top: 20px;
+  margin-left: 2%;
+  width: 96%;
+}
+.slot9 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.slot3 {
+  box-shadow: 0 0 0 1px rgba(20, 20, 31, 0.05),
+    0 1px 3px 0 rgba(20, 20, 31, 0.15);
+  width: 22%;
+  margin-bottom: 20px;
+}
+.slot4 {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  margin-left: 10%;
+  width: 80%;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.slot5,
+.slot6 p {
+  text-align: center;
+  margin: 0;
+  color: #59526b;
+  font-size: 20px;
+}
+.slot5,
+.slot6 h6 {
+  text-align: center;
+  margin: 0;
+  font-size: 18px;
+}
+.slot7 {
+  margin-left: 5%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+.slot6 {
+  width: 45%;
+}
+.slot8 {
+  width: 45%;
+}
+
+.sp1 {
+  margin-top: 20px;
+  width: 1500px;
+  overflow-x: auto;
+}
+.sp1 table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.serviceProImg {
+  color: #363642;
+  background-color: #f7c46c;
+}
+
+/*========= package styling ==========*/
+
+.package1 {
+  box-shadow: 0 0 0 1px rgba(20, 20, 31, 0.05),
+    0 1px 3px 0 rgba(20, 20, 31, 0.15);
+}
+.package2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  margin-left: 5%;
+  width: 90%;
+  gap: 20px;
+}
+
+.packImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.popUpForm {
+  margin-top: 20px;
+}
+
+/* ================ add service styling ===========*/
+
+.addServiceh4 {
+  font-weight: 600;
+  line-height: 1;
+  padding-top: 20px;
+  margin-left: 20px;
+}
+
+.addServiceform {
+  margin-top: 20px;
+  margin-left: 2%;
+  width: 96%;
+}
+.addService1 {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 20px;
+}
+.addService2 {
+  display: flex;
+  flex-direction: column;
+}
+.addService2 label {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.addService2 input,
+select {
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid #c6c9d5;
+}
+
+.addServiceButton {
+  border: none;
+  width: 10%;
+  background: #006eb6;
+  border-radius: 4px;
+  color: #fff;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.addSlot1 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+}
+
+/* ======== create job styling ============*/
+
+.cj1 {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.cj2 {
+  width: 49.5%;
+}
+.cj3 {
+  width: 49.5%;
+}
+
+.cjBtn1 {
+  background-color: #006eb6 !important;
+  border: none;
+  height: 30px;
+  width: 40%;
+  color: #fff;
+}
+.cjBtn2 {
+  background-color: #f5b548;
+  border: none;
+  height: 30px;
+  width: 40%;
+}
+
+.cj4 {
+  margin-top: 30px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.cj4 input {
+  width: 80%;
+  height: 40px;
+  margin-top: 20px;
+}
+.cj4h4 {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.cj6 {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.cj6 h5 {
+  font-size: 16px;
+  font-weight: 800;
+}
+.cj6 input {
+  border: 1px solid #c6c9d5;
+  height: 40px;
+  border-radius: 4px;
+}
+.cj7 {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.cj7 h5 {
+  font-size: 18px;
+  font-weight: 800;
+}
+.cj7 input {
+  width: 70%;
+  border: 1px solid #c6c9d5;
+  height: 40px;
+  border-radius: 4px;
+}
+.cjTable {
+  margin-top: 20px;
+}
+.cjTable table {
+  width: 100%;
+}
+.cjTable table td {
+  text-align: left;
+}
+.cjTable table td input {
+  width: 90%;
+  border: none;
+  height: 30px;
+  border-radius: 4px;
+}
+/* ============ logout styling =======*/
+
+.logout {
+  width: 30%;
+  z-index: 999;
+  position: fixed;
+  display: flex;
+  justify-content: right;
+}
+
+.menu-item {
+  width: 30%;
+}
+
+.sub-menu-container {
+  width: 250px;
+  box-shadow: 2px 2px 2px 1px rgba(20, 20, 31, 0.05),
+    0 1px 3px 0 rgba(20, 20, 31, 0.15);
+  /* border:1px solid #898d9c; */
+}
+.sub-menu-item1 {
+  padding-left: 10px;
+  padding-top: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #898d9c;
+  cursor: pointer;
+}
+.sub-menu-item2 {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  margin-left: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+.sub-menu-item2 i {
+  color: #898d9c;
+}
+.sub-menu-item2 p {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* //button style */
+
+.myButton {
+  border: none;
+  outline: none;
+  background: none;
+}
