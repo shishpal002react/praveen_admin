@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
-import Modal from 'react-bootstrap/Modal';
-import { Form, Button } from 'react-bootstrap';
+import Modal from "react-bootstrap/Modal";
+import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import FormData from "form-data";
 
 function Editparent(props) {
   const name = props.name;
   const ID = props.catid;
-  console.log(ID , "inn");
+  const getData = props.getItem;
+  console.log(ID, "inn");
   const [parentcat, setParentcat] = useState();
-  const [id,setId] = useState();
+  const [id, setId] = useState();
+
   const [image, setImage] = useState();
   const [notice, setNotice] = useState();
   const [status, setStatus] = useState("Publish");
-  const Baseurl = "https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/";
+  const Baseurl =
+    "https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/";
 
- useEffect(() => {
-    if(props.show === true) 
-    {
-        setParentcat(name);
-        setId(ID);
+  useEffect(() => {
+    if (props.show === true) {
+      setNotice(props.notice);
+      setParentcat(name);
+      setId(ID);
     }
- },[props])
+  }, [props]);
 
   const handlenewcat = async (e) => {
     console.log("in");
@@ -32,34 +35,34 @@ function Editparent(props) {
       formdata.append("image", image);
       formdata.append("notice", notice);
       let val;
-      if(status === "Publish"){
-         val = true;
-      }
-      else{
+
+      if (status === "Publish") {
+        val = true;
+      } else {
         val = false;
       }
-      
+
       formdata.append("status", val);
-      console.log(formdata, "from");
+
+      // formdata.append("status", val);
+      console.log(formdata, "from shishpal");
       const response = await axios.put(
-        `https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/api/v1/admin/mainCategory/updateCategory/${ID}`,
+        `${Baseurl}/api/v1/admin/mainCategory/updateCategory/${id}`,
         formdata,
         {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem("access"))}`,
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("access")
+            )}`,
           },
         }
       );
       console.log(response, "success");
-      props.getdata();
-      
-
+      getData();
     } catch (e) {
       console.log(e);
     }
-  }
-  
-
+  };
 
   return (
     <Modal
@@ -77,25 +80,49 @@ function Editparent(props) {
         <Form>
           <Form.Group className="popUpFrom" style={{ marginTop: "20px" }}>
             <Form.Label>Parent Category</Form.Label>
-            <Form.Control type="text" placeholder="Parent Category" value={parentcat} onChange={((e) => setParentcat(e.target.value))} />
+            <Form.Control
+              type="text"
+              placeholder="Parent Category"
+              value={parentcat}
+              onChange={(e) => setParentcat(e.target.value)}
+            />
           </Form.Group>
           <Form.Group style={{ marginTop: "20px" }}>
             <Form.Label>Category Image</Form.Label>
-            <Form.Control type="file" placeholder="Category Image" onChange={((e) => setImage(e.target.files[0]))} />
+            <Form.Control
+              type="file"
+              placeholder="Category Image"
+              onChange={(e) => setImage(e.target.files[0])}
+            />
           </Form.Group>
           <Form.Group style={{ marginTop: "20px" }}>
             <Form.Label>Notice</Form.Label>
-            <Form.Control type="text" placeholder="Category Notice" value={notice} onChange={((e) => setNotice(e.target.value))} />
+            <Form.Control
+              type="text"
+              placeholder="Category Notice"
+              value={notice}
+              onChange={(e) => setNotice(e.target.value)}
+            />
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect1" style={{ marginTop: "20px" }}>
+          <Form.Group
+            controlId="exampleForm.ControlSelect1"
+            style={{ marginTop: "20px" }}
+          >
             <Form.Label>Status</Form.Label>
-            <Form.Control as="select" onChange={((e) => setStatus(e.target.value))}>
+            <Form.Control
+              as="select"
+              onChange={(e) => setStatus(e.target.value)}
+            >
               <option>Publish</option>
               <option>Unpublish</option>
             </Form.Control>
           </Form.Group>
-          <Form.Group style={{ marginTop: "20px", width: "20%" }} >
-            <Button variant="primary" type="submit" onClick={(e) => handlenewcat(e)}>
+          <Form.Group style={{ marginTop: "20px", width: "20%" }}>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={(e) => handlenewcat(e)}
+            >
               Save Category
             </Button>
           </Form.Group>

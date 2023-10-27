@@ -12,6 +12,7 @@ const ChildCategory = () => {
   const [id, setId] = useState();
   const [name, setName] = useState();
   const [query, setQuery] = useState("");
+  const [productSize, setProductSize] = useState();
   const Baseurl =
     "https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/";
 
@@ -65,17 +66,26 @@ const ChildCategory = () => {
     }
   }, [query]);
 
-  const slicedData = TotolData?.slice(firstPostIndex2, lastPostIndex2);
+  //prduct is define
+  let slicedData;
+  if (productSize) {
+    slicedData = TotolData?.slice(firstPostIndex2, productSize);
+  } else {
+    slicedData = TotolData?.slice(firstPostIndex2, lastPostIndex2);
+  }
 
   for (let i = 1; i <= Math.ceil(TotolData?.length / postPerPage2); i++) {
     pages2.push(i);
   }
 
   function Next() {
-    setCurrentPage2(currentPage2 + 1);
+    setProductSize();
+    if (currentPage2 < pages2.length) {
+      setCurrentPage2(currentPage2 + 1);
+    }
   }
-
   function Prev() {
+    setProductSize();
     if (currentPage2 !== 1) {
       setCurrentPage2(currentPage2 - 1);
     }
@@ -98,17 +108,18 @@ const ChildCategory = () => {
       <Navbar />
       <div className="pc1">
         <div className="pc2">
-          <h3> Category</h3>
+          <h5>Category</h5>
           <button onClick={() => setShow(true)}>Add Category</button>
         </div>
         <div className="pc3">
           <div className="pc4">
             <div className="pc5">
               <h6>Show</h6>
-              <select>
+              <select onClick={(e) => setProductSize(e.target.value)}>
                 <option value="10">10</option>
-                <option value="10">25</option>
-                <option value="10">50</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
               </select>
               <h6>entries</h6>
             </div>
@@ -141,19 +152,31 @@ const ChildCategory = () => {
                 {slicedData &&
                   slicedData.map((item, index) => (
                     <tr className="odd">
-                      <td>{index + 1}</td>
+                      <td>
+                        <h6>{index + 1}</h6>
+                      </td>
                       <td>
                         <img src={item.image} className="childImg" />
                       </td>
-                      <td>{item.categoryId.name}</td>
-                      <td>{item.name}</td>
-                      <td></td>
+                      <td>
+                        <h6>{item.categoryId.name}</h6>
+                      </td>
+                      <td>
+                        <h6>{item.name}</h6>
+                      </td>
+                      <td>
+                        <h6>{item.notice}</h6>
+                      </td>
                       <td>
                         <span className="badge ">
                           {item.status ? (
-                            <p className="badge-danger">Publish</p>
+                            <p className="badge-danger">
+                              <h6>Publish</h6>
+                            </p>
                           ) : (
-                            <p className="backColor">Unpublish</p>
+                            <p className="backColor">
+                              <h6>Unpublish</h6>
+                            </p>
                           )}
                         </span>
                       </td>
@@ -170,31 +193,20 @@ const ChildCategory = () => {
               </tbody>
             </table>
             <div className="pc8">
-              <h6>Showing 1 to 10 of {product.length} entries</h6>
+            <h6>
+                Showing 1 to{" "}
+                {productSize
+                  ? slicedData.length
+                  : lastPostIndex2 - firstPostIndex2}{" "}
+                of {product.length} entries
+              </h6>
               <ul className="pc9">
                 <button onClick={() => Prev()} className="myButton ">
                   <li>Previous</li>
                 </button>
 
-                {pages2
-                  ?.slice(currentPage2 - 1, currentPage2 + 3)
-                  .map((i, index) =>
-                    i === pages2?.length ? (
-                      ""
-                    ) : (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentPage2(i)}
-                        className={currentPage2 === i ? "activePage" : ""}
-                      >
-                        {" "}
-                        {i}{" "}
-                      </button>
-                    )
-                  )}
-
+                <li className="pagiBtn">{currentPage2}</li>
                 <button onClick={() => Next()} className="nextBtn myButton ">
-                  {" "}
                   <li>Next</li>
                 </button>
               </ul>
