@@ -32,6 +32,23 @@ const ServiceGroup = () => {
     getdata();
   }, []);
 
+  //delete api
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.get(
+        `${Baseurl}/api/v1/admin/SubCategory/delete/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("access")
+            )}`,
+          },
+        }
+      );
+      getdata();
+    } catch {}
+  };
+
   // Pagination
   const [currentPage2, setCurrentPage2] = useState(1);
   const [postPerPage2] = useState(10);
@@ -53,14 +70,13 @@ const ServiceGroup = () => {
       setCurrentPage2(1);
     }
   }, [query]);
-   //prduct is define
-   let slicedData;
-   if (productSize) {
-     slicedData = TotolData?.slice(firstPostIndex2, productSize);
-   } else {
-     slicedData = TotolData?.slice(firstPostIndex2, lastPostIndex2);
-   }
-
+  //prduct is define
+  let slicedData;
+  if (productSize) {
+    slicedData = TotolData?.slice(firstPostIndex2, productSize);
+  } else {
+    slicedData = TotolData?.slice(firstPostIndex2, lastPostIndex2);
+  }
 
   for (let i = 1; i <= Math.ceil(TotolData?.length / postPerPage2); i++) {
     pages2.push(i);
@@ -148,7 +164,10 @@ const ServiceGroup = () => {
                           <i class="fa fa-edit"></i>
                         </button>
                         <button className="deleteBtn">
-                          <i class="fa-solid fa-trash"></i>
+                          <i
+                            class="fa-solid fa-trash"
+                            onClick={() => handleDelete(item._id)}
+                          ></i>
                         </button>
                       </td>
                     </tr>
@@ -156,7 +175,7 @@ const ServiceGroup = () => {
               </tbody>
             </table>
             <div className="pc8">
-            <h6>
+              <h6>
                 Showing 1 to{" "}
                 {productSize
                   ? slicedData.length

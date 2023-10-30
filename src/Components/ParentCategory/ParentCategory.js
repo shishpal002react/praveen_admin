@@ -101,12 +101,14 @@ const ParentCategory = () => {
       <AddCategory
         show={show}
         onHide={() => setShow(false)}
+        setShow={setShow}
         getdata={getdata}
       />
       <Editparent
         show={editshow}
         onHide={() => setEditShow(false)}
         getdata={getdata}
+        setEditShow={setEditShow}
         catid={id}
         name={name}
         notice={notice}

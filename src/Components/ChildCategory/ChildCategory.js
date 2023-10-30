@@ -13,6 +13,13 @@ const ChildCategory = () => {
   const [name, setName] = useState();
   const [query, setQuery] = useState("");
   const [productSize, setProductSize] = useState();
+
+  // Edit category id
+  const [pCate, setPCat] = useState("");
+  const [childcat, setChildCat] = useState("");
+  const [notice, setNotie] = useState("");
+  const [catImage, setCatImage] = useState();
+
   const Baseurl =
     "https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/";
 
@@ -37,8 +44,10 @@ const ChildCategory = () => {
   }, []);
 
   const handleeditclick = (item) => {
-    setName(item.name);
-    console.log(item.name);
+    setPCat(item.categoryId.name);
+    setChildCat(item.name);
+    setNotie(item.notice);
+    setCatImage(item.image);
     setEditShow(true);
     setId(item._id);
     console.log(item._id, "id");
@@ -99,7 +108,11 @@ const ChildCategory = () => {
         getdata={getdata}
       />
       <Editchild
+        pCate={pCate}
+        childcat={childcat}
         show={editshow}
+        notice={notice}
+        catImage={catImage}
         onHide={() => setEditShow(false)}
         getdata={getdata}
         catid={id}
@@ -193,7 +206,7 @@ const ChildCategory = () => {
               </tbody>
             </table>
             <div className="pc8">
-            <h6>
+              <h6>
                 Showing 1 to{" "}
                 {productSize
                   ? slicedData.length

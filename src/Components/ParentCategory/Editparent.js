@@ -3,11 +3,13 @@ import Modal from "react-bootstrap/Modal";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import FormData from "form-data";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Editparent(props) {
   const name = props.name;
   const ID = props.catid;
-  const getData = props.getItem;
+  // const getData = props.getItem;
   console.log(ID, "inn");
   const [parentcat, setParentcat] = useState();
   const [id, setId] = useState();
@@ -46,6 +48,7 @@ function Editparent(props) {
 
       // formdata.append("status", val);
       console.log(formdata, "from shishpal");
+
       const response = await axios.put(
         `${Baseurl}/api/v1/admin/mainCategory/updateCategory/${id}`,
         formdata,
@@ -57,8 +60,12 @@ function Editparent(props) {
           },
         }
       );
-      console.log(response, "success");
-      getData();
+      toast.success("parent category add successful", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+
+      props.onHide();
+      props.getdata();
     } catch (e) {
       console.log(e);
     }

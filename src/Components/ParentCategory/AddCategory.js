@@ -48,11 +48,9 @@ function AddCategory(props) {
       toast.success("parent category add successful", {
         position: toast.POSITION.TOP_CENTER,
       });
-      formdata.delete("name");
-      formdata.delete("image");
-      formdata.delete("notice");
       props.getdata();
-      props.onHide();
+      props.setShow(false);
+      // props.onHide();
     } catch (e) {
       console.log(e);
     }
