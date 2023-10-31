@@ -5,36 +5,27 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-function AddServiceType(props) {
-  const [name, setName] = useState();
-  const [status, setStatus] = useState();
-  const [parentcat, setParentcat] = useState();
-  const [data, setData] = useState([]);
-
-  const Baseurl =
-    "https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/";
-  const getdata = async () => {
-    try {
-      const response = await axios.get(
-        `${Baseurl}api/v1/admin/mainCategory/allCategory`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access")}`,
-          },
-        }
-      );
-      const data = response.data.data;
-      setData(data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+function EditServiceType(props) {
+  const namep = props.name;
+  const statusp = props.status;
+  const [name, setName] = useState("");
+  const [status, setStatus] = useState("");
+  const [id, setId] = useState("");
+  const [mainCategoryId, setMainCategoryId] = useState("");
 
   useEffect(() => {
-    getdata();
-  }, []);
+    setName(namep);
+    setStatus(statusp);
+    setId(props.id);
+    setMainCategoryId(props.MainCategoryId);
+  }, [props]);
+  console.log("id is print", id);
 
-  const handleAddServices = async (e) => {
+  // setName(props.name);
+  // setStatus(props.status);
+  console.log("is work", name, status, props);
+
+  const handleEditServices = async (e) => {
     console.log("in golu", name);
     e.preventDefault();
 
@@ -49,10 +40,10 @@ function AddServiceType(props) {
       }
 
       formdata.append("status", val);
-      formdata.append("mainCategoryId", parentcat);
+      formdata.append("mainCategoryId", mainCategoryId);
       console.log(formdata, "from data");
-      const response = await axios.post(
-        "https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/api/v1/admin/serviceTypes",
+      const response = await axios.put(
+        `https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/api/v1/admin/serviceTypes/${id}`,
         formdata,
         {
           headers: {
@@ -74,6 +65,7 @@ function AddServiceType(props) {
       console.log(e);
     }
   };
+
   return (
     <>
       <Modal
@@ -84,25 +76,13 @@ function AddServiceType(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Add Service Type
+            Service Type
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="popUpFrom" style={{ marginTop: "20px" }}>
-              <Form.Label>Select P.Category</Form.Label>
-              <Form.Control
-                as="select"
-                onChange={(e) => setParentcat(e.target.value)}
-              >
-                {data &&
-                  data.map((item) => (
-                    <option value={item._id}>{item.name}</option>
-                  ))}
-              </Form.Control>
-            </Form.Group>
             <Form.Group style={{ marginTop: "20px" }}>
-              <Form.Label>Type name</Form.Label>
+              <Form.Label>Type</Form.Label>
               <Form.Control
                 type="text"
                 placeholder=""
@@ -127,7 +107,7 @@ function AddServiceType(props) {
               <Button
                 variant="primary"
                 type="submit"
-                onClick={handleAddServices}
+                onClick={handleEditServices}
               >
                 Save Type
               </Button>
@@ -140,4 +120,4 @@ function AddServiceType(props) {
   );
 }
 
-export default AddServiceType;
+export default EditServiceType;

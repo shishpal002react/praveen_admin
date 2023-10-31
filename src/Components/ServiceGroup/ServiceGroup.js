@@ -3,12 +3,23 @@ import Navbar from "../Navbar/Navbar";
 import AddServiceGroup from "./AddServiceGroup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import EditServiceGroup from "./EditServiceGroup";
 
 const ServiceGroup = () => {
   const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const [product, setProduct] = useState([]);
   const [query, setQuery] = useState("");
   const [productSize, setProductSize] = useState();
+
+  //edit api
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [colourPicker, setColourPicker] = useState("");
+  const [status, setStatus] = useState("");
+  const [image, setImage] = useState("");
+  const [id, setId] = useState("");
+
   const Baseurl =
     "https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/";
 
@@ -34,9 +45,10 @@ const ServiceGroup = () => {
 
   //delete api
   const handleDelete = async (id) => {
+    console.log("delete data", id);
     try {
-      const response = await axios.get(
-        `${Baseurl}/api/v1/admin/SubCategory/delete/${id}`,
+      const response = await axios.delete(
+        `${Baseurl}api/v1/admin/SubCategory/delete/${id}`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
@@ -47,6 +59,14 @@ const ServiceGroup = () => {
       );
       getdata();
     } catch {}
+  };
+
+  //handle edit id
+  const handleEdit = (item) => {
+    setShowEdit(true);
+    setName(item.name);
+    setStatus(item.status);
+    setId(item._id);
   };
 
   // Pagination
@@ -98,6 +118,7 @@ const ServiceGroup = () => {
   return (
     <>
       <AddServiceGroup show={show} onHide={() => setShow(false)} />
+      <EditServiceGroup show={showEdit} onHide={() => setShowEdit(false)} />
       <Navbar />
       <div className="pc1">
         <div className="pc2">
@@ -161,7 +182,10 @@ const ServiceGroup = () => {
                       </td>
                       <td>
                         <button className="editBtn">
-                          <i class="fa fa-edit"></i>
+                          <i
+                            class="fa fa-edit"
+                            onClick={() => handleEdit(item._id)}
+                          ></i>
                         </button>
                         <button className="deleteBtn">
                           <i

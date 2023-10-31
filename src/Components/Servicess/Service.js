@@ -200,7 +200,12 @@ const Service = () => {
                       </td>
                       <td>
                         <button className="editBtn">
-                          <i class="fa fa-edit"></i>
+                          <i
+                            class="fa fa-edit"
+                            onClick={() =>
+                              navigate(`/edit-services/${item._id}`)
+                            }
+                          ></i>
                         </button>
                         <button className="deleteBtn2">
                           <i

@@ -1,5 +1,4 @@
-
-import './App.css';
+import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Login from "./Components/Login";
@@ -21,12 +20,13 @@ import OfferSection from "./Components/OfferSection/OfferSection";
 import Slot from "./Components/Slot/Slot";
 import ServiceProvider from "./Components/ServiceProvider/ServiceProvider";
 import Package from "./Components/Package/Package";
-import AddService from "./Components/Servicess/AddService"
-import AddPackage from "./Components/Package/AddPackage"
-import AddSP from "./Components/ServiceProvider/AddSP"
-import AddSlot from "./Components/Slot/AddSlot"
+import AddService from "./Components/Servicess/AddService";
+import AddPackage from "./Components/Package/AddPackage";
+import AddSP from "./Components/ServiceProvider/AddSP";
+import AddSlot from "./Components/Slot/AddSlot";
 import CreateJob from "./Components/Job/CreateJob";
 import AddCoupon from "./Components/Coupon/AddCoupon";
+import EditServices from "./Components/Servicess/EditServices";
 
 function App() {
   return (
@@ -52,6 +52,7 @@ function App() {
         <Route path="/service-provider" element={<ServiceProvider />} />
         <Route path="/packages" element={<Package />} />
         <Route path="/add-services" element={<AddService />} />
+        <Route path="/edit-services/:id" element={<EditServices />} />
         <Route path="/add-package" element={<AddPackage />} />
         <Route path="/add-sp" element={<AddSP />} />
         <Route path="/add-slot" element={<AddSlot />} />

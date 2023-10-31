@@ -1,19 +1,15 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
-// import MyEditor from "./MyEditor";
-import "./style.css";
 
-const AddService = () => {
+const EditServices = () => {
   const navigate = useNavigate();
-  // state data
-
   return (
     <>
       <Navbar />
       <div className="pc1">
         <div className="pc2">
-          <h3>Service New</h3>
+          <h3>Edit Service</h3>
           <button onClick={() => navigate("/services")}>New Service</button>
         </div>
         <div className="pc3">
@@ -99,9 +95,8 @@ const AddService = () => {
           </div>
         </div>
       </div>
-      {/* <MyEditor /> */}
     </>
   );
 };
 
-export default AddService;
+export default EditServices;

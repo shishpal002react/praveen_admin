@@ -6,18 +6,18 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Editchild(props) {
-  const pCate = props.pCate;
-  const childCat = props.childcat;
-  const noticess = props.notice;
-  const catImage = props.catImage;
+  // const pCate = props.pCate;
+  // const childCat = props.childcat;
+  // const noticess = props.notice;
+  // const catImage = props.catImage;
 
   const name = props.name;
   const ID = props.catid;
   console.log(ID, "inn");
-  const [childcat, setChildcat] = useState(childCat);
-  const [parentcat, setParentcat] = useState(pCate);
-  const [image, setImage] = useState(catImage);
-  const [notice, setNotice] = useState(noticess);
+  const [childcat, setChildcat] = useState(props.childcat);
+  const [parentcat, setParentcat] = useState(props.pCate);
+  const [image, setImage] = useState(props.catImage);
+  const [notice, setNotice] = useState(props.notice);
   const [status, setStatus] = useState("Publish");
   const [data, setData] = useState();
   const [categoryid, setCategoryid] = useState();
@@ -74,7 +74,11 @@ function Editchild(props) {
           },
         }
       );
+      toast.success("parent category add successful", {
+        position: toast.POSITION.TOP_CENTER,
+      });
       console.log(response, "success");
+      props.onHide();
       props.getdata();
     } catch (e) {
       console.log(e);
@@ -95,7 +99,7 @@ function Editchild(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Child Category
+            Edit Child Category
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

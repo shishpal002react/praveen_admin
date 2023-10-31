@@ -3,12 +3,20 @@ import Navbar from "../Navbar/Navbar";
 import AddServiceType from "./AddServiceType";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import EditServiceType from "./EditServiceType";
 
 const ServiceType = () => {
   const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const [product, setProduct] = useState([]);
   const [query, setQuery] = useState("");
   const [productSize, setProductSize] = useState();
+
+  //handle data edit api
+  const [name, setName] = useState();
+  const [status, setStatus] = useState();
+  const [id, setId] = useState();
+  const [mainCategoryId, setMainCategoryId] = useState("");
 
   //api call
   const Baseurl =
@@ -36,8 +44,8 @@ const ServiceType = () => {
   //delete api
   const handleDelete = async (id) => {
     try {
-      const response = await axios.get(
-        `${Baseurl}/api/v1/admin/serviceTypes//${id}`,
+      const response = await axios.delete(
+        `${Baseurl}/api/v1/admin/serviceTypes/${id}`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
@@ -49,6 +57,17 @@ const ServiceType = () => {
       getdata();
     } catch {}
   };
+
+  //handle edit id
+  const handleEdit = (item) => {
+    setShowEdit(true);
+    setName(item.name);
+    setStatus(item.status);
+    setId(item._id);
+    setMainCategoryId(item.mainCategoryId);
+  };
+
+  console.log(name, status, "gyhij bdueu fe jf");
 
   //pagination  // Pagination
   const [currentPage2, setCurrentPage2] = useState(1);
@@ -101,7 +120,21 @@ const ServiceType = () => {
 
   return (
     <>
-      <AddServiceType show={show} onHide={() => setShow(false)} />
+      <AddServiceType
+        show={show}
+        onHide={() => setShow(false)}
+        getdata={getdata}
+        data={product}
+      />
+      <EditServiceType
+        show={showEdit}
+        onHide={() => setShowEdit(false)}
+        name={name}
+        id={id}
+        status={status}
+        getdata={getdata}
+        MainCategoryId={mainCategoryId}
+      />
       <Navbar />
       <div className="pc1">
         <div className="pc2">
@@ -161,7 +194,10 @@ const ServiceType = () => {
                       </td>
                       <td>
                         <button className="editBtn">
-                          <i class="fa fa-edit"></i>
+                          <i
+                            class="fa fa-edit"
+                            onClick={() => handleEdit(item)}
+                          ></i>
                         </button>
                         <button className="deleteBtn">
                           <i

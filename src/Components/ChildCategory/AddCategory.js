@@ -36,6 +36,8 @@ function AddCategory(props) {
     getdata();
   }, []);
 
+  console.log("data is not find", data);
+
   const handlenewcat = async (e) => {
     console.log("in");
     e.preventDefault();
