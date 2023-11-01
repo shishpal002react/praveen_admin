@@ -381,6 +381,12 @@ hr {
   margin-top: 30px;
   margin-left: 5%;
   width: 90%;
+  margin-bottom: 8%;
+}
+
+.edit-driver {
+  margin-top: 30px;
+  width: 90%;
 }
 .pc2 {
   display: flex;
@@ -759,6 +765,8 @@ select {
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding: auto;
+  padding-bottom: 50px;
 }
 
 .addSlot1 {

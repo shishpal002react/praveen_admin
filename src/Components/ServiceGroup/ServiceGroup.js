@@ -64,6 +64,7 @@ const ServiceGroup = () => {
   //handle edit id
   const handleEdit = (item) => {
     setShowEdit(true);
+    setDescription(item.description);
     setName(item.name);
     setStatus(item.status);
     setId(item._id);
@@ -118,7 +119,13 @@ const ServiceGroup = () => {
   return (
     <>
       <AddServiceGroup show={show} onHide={() => setShow(false)} />
-      <EditServiceGroup show={showEdit} onHide={() => setShowEdit(false)} />
+      <EditServiceGroup
+        show={showEdit}
+        onHide={() => setShowEdit(false)}
+        id={id}
+        name={name}
+        description={description}
+      />
       <Navbar />
       <div className="pc1">
         <div className="pc2">

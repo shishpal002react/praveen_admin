@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Navbar from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import JoditEditor from "jodit-react";
 
 const Service = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState([]);
   const [query, setQuery] = useState("");
   const [productSize, setProductSize] = useState();
+  const editor = useRef(null);
+  const [content, setContent] = useState("");
 
   const getdata = async () => {
     try {

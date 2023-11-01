@@ -9,7 +9,7 @@ const ChildCategory = () => {
   const [show, setShow] = useState(false);
   const [editshow, setEditShow] = useState(false);
   const [product, setProduct] = useState([]);
-  const [id, setId] = useState();
+  const [id, setId] = useState("");
   const [name, setName] = useState();
   const [query, setQuery] = useState("");
   const [productSize, setProductSize] = useState();
@@ -18,7 +18,9 @@ const ChildCategory = () => {
   const [pCate, setPCat] = useState("");
   const [childcat, setChildCat] = useState("");
   const [notice, setNotie] = useState("");
-  const [catImage, setCatImage] = useState();
+  const [catImage, setCatImage] = useState("");
+  const [item, setItem] = useState();
+  const [status, setStatus] = useState();
 
   const Baseurl =
     "https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/";
@@ -50,6 +52,8 @@ const ChildCategory = () => {
     setCatImage(item.image);
     setEditShow(true);
     setId(item._id);
+    setItem(item);
+    setStatus(item.status);
     console.log(item._id, "id");
   };
 
@@ -115,7 +119,9 @@ const ChildCategory = () => {
         catImage={catImage}
         onHide={() => setEditShow(false)}
         getdata={getdata}
-        catid={id}
+        status={status}
+        id={id}
+        item={item}
         name={name}
       />
       <Navbar />

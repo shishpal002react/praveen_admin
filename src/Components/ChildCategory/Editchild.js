@@ -12,15 +12,27 @@ function Editchild(props) {
   // const catImage = props.catImage;
 
   const name = props.name;
-  const ID = props.catid;
-  console.log(ID, "inn");
-  const [childcat, setChildcat] = useState(props.childcat);
-  const [parentcat, setParentcat] = useState(props.pCate);
-  const [image, setImage] = useState(props.catImage);
-  const [notice, setNotice] = useState(props.notice);
-  const [status, setStatus] = useState("Publish");
+  // const images=props.item.image
+  const [childcat, setChildcat] = useState("");
+  const [parentcat, setParentcat] = useState("");
+  const [image, setImage] = useState("");
+  const [notice, setNotice] = useState("");
+  const [status, setStatus] = useState("");
+  const [tempStatus, settemstatus] = useState();
   const [data, setData] = useState();
+  const [id, setId] = useState("");
   const [categoryid, setCategoryid] = useState();
+
+  console.log(props.item, "jai maa kali");
+
+  useEffect(() => {
+    setChildcat(props.childcat);
+    setParentcat(props.pCate);
+    setImage(props.item);
+    settemstatus(props.status);
+    setNotice(props.notice);
+    setId(props.id);
+  }, [props]);
 
   const Baseurl =
     "https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/";
@@ -64,7 +76,7 @@ function Editchild(props) {
       formdata.append("status", val);
       console.log(formdata, "from");
       const response = await axios.put(
-        `https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/api/v1/admin/Category/update/${ID}`,
+        `https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/api/v1/admin/Category/update/${id}`,
         formdata,
         {
           headers: {
@@ -74,7 +86,7 @@ function Editchild(props) {
           },
         }
       );
-      toast.success("parent category add successful", {
+      toast.success("child Category successful", {
         position: toast.POSITION.TOP_CENTER,
       });
       console.log(response, "success");
@@ -86,7 +98,7 @@ function Editchild(props) {
   };
 
   {
-    console.log(parentcat);
+    console.log(status, "jai maa kali");
   }
 
   return (
@@ -121,7 +133,7 @@ function Editchild(props) {
               <Form.Control
                 type="text"
                 placeholder="Child Category"
-                value={props.childCat}
+                value={childcat}
                 onChange={(e) => setChildcat(e.target.value)}
               />
             </Form.Group>
@@ -131,7 +143,7 @@ function Editchild(props) {
               <Form.Control
                 type="text"
                 placeholder="Category Notice"
-                value={props.notice}
+                value={notice}
                 onChange={(e) => setNotice(e.target.value)}
               />
             </Form.Group>
@@ -150,6 +162,7 @@ function Editchild(props) {
               <Form.Label>Status</Form.Label>
               <Form.Control
                 as="select"
+                // value={tempStatus === 0 ? "Publish" : "Unpublish"}
                 onChange={(e) => setStatus(e.target.value)}
               >
                 <option>Publish</option>

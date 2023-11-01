@@ -69,7 +69,7 @@ function AddCategory(props) {
         }
       );
       console.log(response, "success");
-      toast.success("parent category add successful", {
+      toast.success("Add child Category successful", {
         position: toast.POSITION.TOP_CENTER,
       });
       props.getdata();

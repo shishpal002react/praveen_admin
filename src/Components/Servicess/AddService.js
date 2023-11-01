@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Navbar from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
-// import MyEditor from "./MyEditor";
-import "./style.css";
+import JoditEditor from "jodit-react";
 
 const AddService = () => {
   const navigate = useNavigate();
   // state data
+  const editor = useRef(null);
+  const [content, setContent] = useState("");
 
   return (
     <>
@@ -94,12 +95,19 @@ const AddService = () => {
                   </select>
                 </div>
               </div>
+              <br />
+              <JoditEditor
+                className="edit-driver"
+                ref={editor}
+                value={content}
+                onBlur={(newContent) => setContent(newContent)}
+                onChange={(newContent) => setContent(newContent)}
+              />
               <button className="addServiceButton">Create Service</button>
             </form>
           </div>
         </div>
       </div>
-      {/* <MyEditor /> */}
     </>
   );
 };
