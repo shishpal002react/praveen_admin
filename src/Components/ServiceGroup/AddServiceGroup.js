@@ -4,17 +4,23 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import JoditEditor from "jodit-react";
+import { useRef } from "react";
 
 function AddServiceGroup(props) {
   const [name, setName] = useState();
   const [status, setStatus] = useState();
-  const [description, setDescription] = useState("");
+
   const [color, setColor] = useState("");
   const [image, setImage] = useState("");
   const [parentCategory, setParentCategory] = useState();
   const [childCategory, setChildCategory] = useState();
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
+
+  //text driver
+  const editor = useRef(null);
+  const [description, setDescription] = useState("");
 
   //parent category
   const Baseurl =
@@ -42,11 +48,10 @@ function AddServiceGroup(props) {
   }, []);
 
   //child category
-
   const getData = async () => {
     try {
       const response = await axios.get(
-        `${Baseurl}api/v1/admin/Category/getAllCategory`,
+        `${Baseurl}api/v1/admin/Category/allCategory/${parentCategory}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access")}`,
@@ -61,7 +66,7 @@ function AddServiceGroup(props) {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [parentCategory]);
 
   const handleAddGroup = async (e) => {
     console.log("in golu", name);
@@ -98,7 +103,7 @@ function AddServiceGroup(props) {
         }
       );
       console.log(response, "success");
-      toast.success("parent category add successful", {
+      toast.success("Add group service successful", {
         position: toast.POSITION.TOP_CENTER,
       });
       props.onHide();
@@ -149,7 +154,7 @@ function AddServiceGroup(props) {
                   </Form.Control>
                 </Form.Group>
               </Form.Group>
-              <Form.Label>Group Name</Form.Label>
+              <Form.Label>Service Group Name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Group name"
@@ -166,17 +171,17 @@ function AddServiceGroup(props) {
               />
             </Form.Group>
             <Form.Group style={{ marginTop: "20px" }}>
-              <Form.Label>Group</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="Description"
+              <Form.Label>Group Description</Form.Label>
+              <JoditEditor
+                ref={editor}
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                tabIndex={1} // tabIndex of textarea
+                onBlur={(newContent) => setDescription(newContent)} // preferred to use only this option to update the content for performance reasons
+                onChange={(newContent) => setDescription(newContent)}
               />
             </Form.Group>
             <Form.Group style={{ marginTop: "20px" }}>
-              <Form.Label>Group</Form.Label>
+              <Form.Label>Color</Form.Label>
               <Form.Control
                 type="color"
                 placeholder=""

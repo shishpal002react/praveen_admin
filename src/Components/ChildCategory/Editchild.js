@@ -6,30 +6,17 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Editchild(props) {
-  // const pCate = props.pCate;
-  // const childCat = props.childcat;
-  // const noticess = props.notice;
-  // const catImage = props.catImage;
-
-  const name = props.name;
-  // const images=props.item.image
-  const [childcat, setChildcat] = useState("");
-  const [parentcat, setParentcat] = useState("");
-  const [image, setImage] = useState("");
-  const [notice, setNotice] = useState("");
-  const [status, setStatus] = useState("");
-  const [tempStatus, settemstatus] = useState();
-  const [data, setData] = useState();
-  const [id, setId] = useState("");
-  const [categoryid, setCategoryid] = useState();
-
-  console.log(props.item, "jai maa kali");
+  const [childcat, setChildcat] = useState();
+  const [parentcat, setParentcat] = useState();
+  const [image, setImage] = useState();
+  const [notice, setNotice] = useState();
+  const [status, setStatus] = useState();
+  const [data, setData] = useState([]);
+  const [id, setId] = useState();
 
   useEffect(() => {
     setChildcat(props.childcat);
     setParentcat(props.pCate);
-    setImage(props.item);
-    settemstatus(props.status);
     setNotice(props.notice);
     setId(props.id);
   }, [props]);
@@ -55,13 +42,14 @@ function Editchild(props) {
   useEffect(() => {
     getdata();
   }, []);
-
+  console.log(id);
   const handlenewcat = async (e) => {
     console.log("in");
     e.preventDefault();
 
     try {
       const formdata = new FormData();
+
       formdata.append("name", childcat);
       formdata.append("image", image);
       formdata.append("notice", notice);
@@ -86,20 +74,21 @@ function Editchild(props) {
           },
         }
       );
-      toast.success("child Category successful", {
+      toast.success("Edit child category successful", {
         position: toast.POSITION.TOP_CENTER,
       });
       console.log(response, "success");
       props.onHide();
       props.getdata();
     } catch (e) {
-      console.log(e);
+      // console.log(e); only testing use
+      // toast.success("Edit child category successful", {
+      //   position: toast.POSITION.TOP_CENTER,
+      // });
+      // props.onHide();
+      // props.getdata();
     }
   };
-
-  {
-    console.log(status, "jai maa kali");
-  }
 
   return (
     <>
@@ -162,7 +151,6 @@ function Editchild(props) {
               <Form.Label>Status</Form.Label>
               <Form.Control
                 as="select"
-                // value={tempStatus === 0 ? "Publish" : "Unpublish"}
                 onChange={(e) => setStatus(e.target.value)}
               >
                 <option>Publish</option>
@@ -181,7 +169,6 @@ function Editchild(props) {
           </Form>
         </Modal.Body>
       </Modal>
-      <ToastContainer />
     </>
   );
 }

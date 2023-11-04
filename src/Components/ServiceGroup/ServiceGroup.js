@@ -4,6 +4,8 @@ import AddServiceGroup from "./AddServiceGroup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import EditServiceGroup from "./EditServiceGroup";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const ServiceGroup = () => {
   const [show, setShow] = useState(false);
@@ -118,13 +120,18 @@ const ServiceGroup = () => {
 
   return (
     <>
-      <AddServiceGroup show={show} onHide={() => setShow(false)} />
+      <AddServiceGroup
+        show={show}
+        onHide={() => setShow(false)}
+        getdata={getdata}
+      />
       <EditServiceGroup
         show={showEdit}
         onHide={() => setShowEdit(false)}
         id={id}
         name={name}
         description={description}
+        getdata={getdata}
       />
       <Navbar />
       <div className="pc1">
@@ -159,7 +166,10 @@ const ServiceGroup = () => {
               <thead>
                 <tr>
                   <th className="th1">#</th>
-                  <th className="th3">Group</th>
+                  <th className="th3">Group Name</th>
+                  <th className="th3">P.Category</th>
+                  <th className="th3">C.Category</th>
+                  <th className="th3">Group Description</th>
                   <th className="th6">Status</th>
                   <th className="th7">Action</th>
                 </tr>
@@ -173,6 +183,15 @@ const ServiceGroup = () => {
                       </td>
                       <td>
                         <h6>{item.name}</h6>
+                      </td>
+                      <td>
+                        <h6>{item.mainCategoryId.name}</h6>
+                      </td>
+                      <td>
+                        <h6>{item.categoryId.name}</h6>
+                      </td>
+                      <td>
+                        <h6>{item.description}</h6>
                       </td>
                       <td>
                         <span className="badge ">
@@ -191,7 +210,7 @@ const ServiceGroup = () => {
                         <button className="editBtn">
                           <i
                             class="fa fa-edit"
-                            onClick={() => handleEdit(item._id)}
+                            onClick={() => handleEdit(item)}
                           ></i>
                         </button>
                         <button className="deleteBtn">

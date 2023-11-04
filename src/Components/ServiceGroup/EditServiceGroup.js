@@ -4,6 +4,8 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import JoditEditor from "jodit-react";
+import { useRef } from "react";
 
 function EditServiceGroup(props) {
   // const namep = props.name;
@@ -13,7 +15,6 @@ function EditServiceGroup(props) {
   const [id, setId] = useState("");
   const [name, setName] = useState();
   const [status, setStatus] = useState();
-  const [description, setDescription] = useState("");
   const [color, setColor] = useState("");
   const [image, setImage] = useState("");
   const [parentCategory, setParentCategory] = useState();
@@ -21,14 +22,16 @@ function EditServiceGroup(props) {
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
 
+  //text driver
+  const editor = useRef(null);
+  const [description, setDescription] = useState("");
+
   useEffect(() => {
     setName(props.name);
     setStatus(props.status);
     setDescription(props.description);
     setId(props.id);
   }, [props]);
-
-  console.log("jai maa kali", name);
 
   // setName(props.name);
   //parent category
@@ -57,11 +60,10 @@ function EditServiceGroup(props) {
   }, []);
 
   //child category
-
   const getData = async () => {
     try {
       const response = await axios.get(
-        `{Baseurl}api/v1/admin/Category/getAllCategory`,
+        `${Baseurl}api/v1/admin/Category/allCategory/${parentCategory}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access")}`,
@@ -76,7 +78,7 @@ function EditServiceGroup(props) {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [parentCategory]);
 
   const handleAddGroup = async (e) => {
     e.preventDefault();
@@ -180,13 +182,13 @@ function EditServiceGroup(props) {
               />
             </Form.Group>
             <Form.Group style={{ marginTop: "20px" }}>
-              <Form.Label>Group</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="Description"
+              <Form.Label>Group Description</Form.Label>
+              <JoditEditor
+                ref={editor}
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                tabIndex={1} // tabIndex of textarea
+                onBlur={(newContent) => setDescription(newContent)} // preferred to use only this option to update the content for performance reasons
+                onChange={(newContent) => setDescription(newContent)}
               />
             </Form.Group>
             <Form.Group style={{ marginTop: "20px" }}>

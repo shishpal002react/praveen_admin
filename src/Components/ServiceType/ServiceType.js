@@ -138,7 +138,7 @@ const ServiceType = () => {
       <Navbar />
       <div className="pc1">
         <div className="pc2">
-          <h3>Service Types</h3>
+          <h5>Service Types</h5>
           <button onClick={() => setShow(true)}>New Type</button>
         </div>
         <div className="pc3">
@@ -177,8 +177,12 @@ const ServiceType = () => {
                 {slicedData &&
                   slicedData.map((item, index) => (
                     <tr className="odd">
-                      <td>{index + 1}</td>
-                      <td>{item.name}</td>
+                      <td>
+                        <h6>{index + 1}</h6>
+                      </td>
+                      <td>
+                        <h6>{item.name}</h6>
+                      </td>
                       <td>
                         <span className="badge ">
                           {item.status ? (

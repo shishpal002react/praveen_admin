@@ -12,6 +12,7 @@ function EditServiceType(props) {
   const [status, setStatus] = useState("");
   const [id, setId] = useState("");
   const [mainCategoryId, setMainCategoryId] = useState("");
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     setName(namep);
@@ -19,11 +20,31 @@ function EditServiceType(props) {
     setId(props.id);
     setMainCategoryId(props.MainCategoryId);
   }, [props]);
-  console.log("id is print", id);
 
   // setName(props.name);
   // setStatus(props.status);
-  console.log("is work", name, status, props);
+  const Baseurl =
+    "https://vg4op6mne2.execute-api.ap-south-1.amazonaws.com/dev/";
+  const getdata = async () => {
+    try {
+      const response = await axios.get(
+        `${Baseurl}api/v1/admin/mainCategory/allCategory`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access")}`,
+          },
+        }
+      );
+      const data = response.data.data;
+      setData(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getdata();
+  }, []);
 
   const handleEditServices = async (e) => {
     console.log("in golu", name);
@@ -81,6 +102,18 @@ function EditServiceType(props) {
         </Modal.Header>
         <Modal.Body>
           <Form>
+            <Form.Group className="popUpFrom" style={{ marginTop: "20px" }}>
+              <Form.Label>Select P.Category</Form.Label>
+              <Form.Control
+                as="select"
+                onChange={(e) => setMainCategoryId(e.target.value)}
+              >
+                {data &&
+                  data.map((item) => (
+                    <option value={item._id}>{item.name}</option>
+                  ))}
+              </Form.Control>
+            </Form.Group>
             <Form.Group style={{ marginTop: "20px" }}>
               <Form.Label>Type</Form.Label>
               <Form.Control
